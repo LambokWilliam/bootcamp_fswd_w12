@@ -4,6 +4,7 @@ function Board() {
   const [squares, setSquares] = React.useState(Array(9).fill(null));
   const [nextValue, setNextValue] = React.useState('X');
   const winner = calculateWinner(squares);
+  const status = calculateStatus(winner, squares, nextValue);
 
   function selectSquare(square) {
     if (squares[square] || winner) return;
@@ -28,34 +29,36 @@ function Board() {
     );
   }
 
-  const status = calculateStatus(winner, squares, nextValue);
-
   return (
     <div>
-      <div>{status}</div>
-      <div>
+      <div className='status-text'>{status}</div>
+      <div style={{ display: 'flex' }}>
         {renderSquare(0)}
         {renderSquare(1)}
         {renderSquare(2)}
       </div>
-      <div>
+      <div style={{ display: 'flex' }}>
         {renderSquare(3)}
         {renderSquare(4)}
         {renderSquare(5)}
       </div>
-      <div>
+      <div style={{ display: 'flex' }}>
         {renderSquare(6)}
         {renderSquare(7)}
         {renderSquare(8)}
       </div>
-      <button onClick={restart}>restart</button>
+      <button
+        className='restart-button'
+        onClick={restart}>
+        Restart
+      </button>
     </div>
   );
 }
 
 function Game() {
   return (
-    <div>
+    <div className='game'>
       <div>
         <Board />
       </div>
