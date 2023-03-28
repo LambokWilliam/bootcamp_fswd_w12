@@ -58,8 +58,8 @@ function Board() {
 
 function Game() {
   return (
-    <div className='game'>
-      <div>
+    <div>
+      <div className='game'>
         <Board />
       </div>
     </div>
